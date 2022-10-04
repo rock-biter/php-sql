@@ -48,6 +48,16 @@ class Department
     return Department::resultToArray($result);
   }
 
+  static public function find($id)
+  {
+    $conn = DB::getConn();
+    $sql = "SELECT * FROM `departments` WHERE id = $id";
+    $result = $conn->query($sql);
+    $conn->close();
+
+    return Department::resultToArray($result);
+  }
+
   static public function resultToArray($result)
   {
     if ($result && $result->num_rows > 0) {

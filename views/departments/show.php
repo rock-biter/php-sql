@@ -11,34 +11,27 @@
 <body>
 
   <?php
-  if ($result && $result->num_rows > 0) {
-
-    while ($row = $result->fetch_assoc()) {
+  foreach ($result as $department) :
   ?>
-      <div style="border: 1px solid black; border-radius: 10px; padding: 15px;">
-        <h3>
-          <?php echo $row['name'] ?>
-        </h3>
-        <p>
-          <?php echo $row['email'] ?>
-        </p>
-        <p>
-          <?php echo $row['address'] ?>
-        </p>
-        <p>
-          <?php echo $row['phone'] ?>
-        </p>
-        <a href="<?php echo $row['website'] ?>">
-          <?php echo $row['website'] ?>
-        </a>
-      </div>
+    <div style="border: 1px solid black; border-radius: 10px; padding: 15px;">
+      <h3>
+        <?php echo $department->name ?>
+      </h3>
+      <p>
+        <?php echo $department->email ?>
+      </p>
+      <p>
+        <?php echo $department->address ?>
+      </p>
+      <p>
+        <?php echo $department->phone ?>
+      </p>
+      <a href="<?php echo $department->website ?>">
+        <?php echo $department->website ?>
+      </a>
+    </div>
   <?php
-    }
-  } else if ($result) {
-    echo 'nessun risultato';
-  } else {
-    echo 'Query error';
-  }
+  endforeach;
   ?>
 
 </body>

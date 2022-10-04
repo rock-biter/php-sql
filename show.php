@@ -1,18 +1,22 @@
 <?php
 
-define("DB_SERVERNAME", "localhost");
-define("DB_USERNAME", "root");
-define("DB_PASSWORD", "root");
-define("DB_NAME", "university");
+include __DIR__ . '/app/Department.php';
+
+// define("DB_SERVERNAME", "localhost");
+// define("DB_USERNAME", "root");
+// define("DB_PASSWORD", "root");
+// define("DB_NAME", "university");
 
 
-$conn = new mysqli(DB_SERVERNAME, DB_USERNAME, DB_PASSWORD, DB_NAME);
+// $conn = new mysqli(DB_SERVERNAME, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-$stm = $conn->prepare('SELECT * FROM `departments` WHERE `id` = ?');
+// $stm = $conn->prepare('SELECT * FROM `departments` WHERE `id` = ?');
 
-$stm->bind_param('s', $_GET['id']);
-$stm->execute();
+// $stm->bind_param('s', $_GET['id']);
+// $stm->execute();
 
-$result = $stm->get_result();
+// $result = $stm->get_result();
+$id = $_GET['id'];
+$result = Department::find($id);
 
 include __DIR__ . '/views/departments/show.php';
